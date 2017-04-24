@@ -1,0 +1,45 @@
+<div class="Dashboard">
+    <navbar-dashboard></navbar-dashboard>
+    <div class="container">
+        <div ng-show="groups.info && groups.count" class="alert alert-info mailapp-alert">{{groups.info}}</div>
+        <div class="row page-header">
+            <div class="col-md-6">
+                <h1>GROUPS</h1>
+            </div>
+            <div class="col-md-6 text-right">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <input type="name"
+                               ng-model="groups.name"
+                               id="group-name"
+                               placeholder="Group name"
+                               class="form-control"/>
+                    </div>
+                    <button ng-click="groups.create()" type="submit" class="btn btn-primary">ADD NEW GROUP</button>
+                </form>
+            </div>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Key</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="group in groups.groups">
+                <td>{{group.name}}</td>
+                <td>{{group.group_key}}</td>
+                <td class="text-right">
+                    <button ng-click="groups.remove(group.id)"
+                            class="btn btn-xs btn-danger"
+                            type="button">Remove
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

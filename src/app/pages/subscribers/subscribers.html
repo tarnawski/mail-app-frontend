@@ -1,0 +1,41 @@
+<div class="Dashboard">
+    <navbar-dashboard></navbar-dashboard>
+    <div class="container">
+        <div ng-show="subscribers.info && subscribers.count" class="alert alert-info mailapp-alert">{{subscribers.info}}</div>
+        <div class="row page-header">
+            <div class="col-md-6">
+                <h1>SUBSCRIBERS</h1>
+            </div>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Email</th>
+                <th>Group</th>
+                <th>Create date</th>
+                <th>Attributes</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="subscriber in subscribers.subscribers">
+                <td>{{subscriber.email}}</td>
+                <td>{{subscriber.subscriber_group.name}}</td>
+                <td>{{subscriber.created_at}}</td>
+                <td>
+                    <p ng-repeat="attribute in subscriber.attributes">
+                        <b>{{attribute.name | uppercase}}:</b> {{attribute.value}}
+                    </p>
+                </td>
+                <td class="text-right">
+                    <button ng-click="subscribers.remove(subscriber.id)"
+                            class="btn btn-xs btn-danger"
+                            type="button">Remove
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

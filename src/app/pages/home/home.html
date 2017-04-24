@@ -1,0 +1,227 @@
+<navbar></navbar>
+<div class="about-box">
+    <br><br><br><br><br>
+    <div class="text-center logo">mailapp</div>
+    <div class="promo">
+        Create a free mailapp account to collect email addresses and send news to customers, contributors and fans.
+    </div>
+    <br><br>
+    <div class="text-center">
+        <button ui-sref="register" class="register-box-button">Get started with a free account!</button>
+    </div>
+</div>
+<br><br>
+
+<div class="container text-center" id="features">
+    <h1>Application Features</h1>
+    <h3>Collect email addresses on your website and sell more.</h3>
+    <hr>
+</div>
+
+<div class="container about-top text-center">
+    <div class="row center-block">
+        <div class="col-md-3 text-center">
+            <img ng-src="assets/images/connection.png" class="center-block">
+            <h3>More subscribers</h3>
+            <h4>Build an email list and stay in touch with your customers and prospects.</h4>
+        </div>
+        <div class="col-md-3 text-center">
+            <img ng-src="assets/images/install.png" class="center-block">
+            <h3>Easy installation</h3>
+            <h4>
+                Add a code snippet to your website and collect more leads through your website.
+            </h4>
+        </div>
+        <div class="col-md-3 text-center">
+            <img ng-src="assets/images/customizing.png" class="center-block">
+            <h3>Customization</h3>
+            <h4>You choose how your widgets will look like. Add custom images, choose colors, fonts and animations.</h4>
+        </div>
+        <div class="col-md-3 text-center">
+            <img ng-src="assets/images/examples.png" class="center-block">
+            <h3>Examples</h3>
+            <h4>See all useful features of mailapp in action.</h4>
+        </div>
+        <div class="col-md-3 text-center">
+
+        </div>
+    </div>
+</div>
+<br><br>
+<div class="jumbotron">
+    <div class="container">
+        <div class="row text-center">
+            <h1>Get started with a free account.</h1>
+            <h2>No commitment. No credit card required.</h2>
+            <button ui-sref="register" class="register-box-button">Get Started!</button>
+        </div>
+        <br>
+    </div>
+</div>
+<br><br>
+<div class="container text-center" id="documentation">
+    <h1>Web API Endpoint Reference</h1>
+    <h3>Start here to learn the essentials about integration with mailapp.</h3>
+    <hr>
+</div>
+<br><br>
+<div class="container documentation">
+    <div class="row">
+        <div class="col-md-6 text">
+<pre>
+POST http://www.api.mailapp.pl
+</pre>
+        </div>
+        <div class="col-md-6">
+            <h2>Endpoint</h2>
+            <p>This endpoint give external applications possibility to add email (not only) to your subscriber
+                group.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 text">
+<pre>
+{
+  "email": "thomas@contact.com",
+  "group": "GROUP_KEY",
+  "attributes": [
+      {
+        "name": "name",
+        "value": "Thomas"
+      },
+      {
+        "name": "gender",
+        "value": "man"
+      }
+  ]
+}
+</pre>
+        </div>
+        <div class="col-md-6">
+            <h2>Request Body</h2>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Required</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>email</td>
+                    <td class="text-center">YES</td>
+                    <td>The email address coming from the field on the subscribe form.</td>
+                </tr>
+                <tr>
+                    <td>group</td>
+                    <td class="text-center">YES</td>
+                    <td>The group key generated when you create new group in the admin panel.</td>
+                </tr>
+                <tr>
+                    <td>attributes</td>
+                    <td class="text-center">NO</td>
+                    <td>Unlimited additional attributes consisting of name and value pairs.</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 text">
+<pre>
+{
+  "status": "success",
+  "message": "The email address has been saved correctly"
+  "code": 100
+}
+</pre>
+        </div>
+        <div class="col-md-6">
+            <h2>Response Format</h2>
+            On success, the HTTP status code in the response header is 201 Created and the response body contains
+            status "success".
+        </div>
+    </div>
+    <br><br>
+    <div class="container text-center" id="examples">
+        <h1>Examples</h1>
+        <h3>See all useful features of mailapp in action.</h3>
+        <hr>
+    </div>
+</div>
+<div class="container examples text">
+<h2> Example 1. Basic subscribe form</h2>
+<pre>
+&lt;form class=&quot;form-inline&quot; id=&quot;subscribe-form&quot;&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;label for=&quot;subscribe-email&quot;&gt;Subscribe to our newsletter:&lt;/label&gt;
+    &lt;input type=&quot;email&quot; id=&quot;subscribe-email&quot; class=&quot;form-control&quot;/&gt;
+  &lt;/div&gt;
+  &lt;button type=&quot;submit&quot; class=&quot;btn btn-primary&quot;&gt;Subscribe&lt;/button&gt;
+&lt;/form&gt;
+</pre>
+<pre>
+$( "#subscribe-form" ).submit(function( event ) {
+  event.preventDefault();
+  var data = {
+    email: $( "#subscribe-email" ).val(),
+    group: "GROUP_KEY"
+  };
+
+  $.post( http://www.api.mailapp.pl, JSON.stringify(data))
+    .done(function( response ) {
+      alert.("Email been saved correctly");
+    })
+    .fail(function( response ) {
+      alert.("Something has gone wrong...");
+    });
+});
+</pre>
+<br>
+<h2>Example 2. Subscribe form with additional attributes</h2>
+<pre>
+&lt;form class=&quot;form-inline&quot; id=&quot;subscribe-form&quot;&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;label for=&quot;subscribe-name&quot;&gt;Your name:&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;subscribe-name&quot; class=&quot;form-control&quot;/&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;label for=&quot;subscribe-email&quot;&gt;Subscribe to our newsletter:&lt;/label&gt;
+    &lt;input  type=&quot;email&quot; id=&quot;subscribe-email&quot; class=&quot;form-control&quot;/&gt;
+  &lt;/div&gt;
+  &lt;button type=&quot;submit&quot; class=&quot;btn btn-primary&quot;&gt;Subscribe&lt;/button&gt;
+&lt;/form&gt;
+</pre>
+    <pre>
+$( "#subscribe-form" ).submit(function( event ) {
+  event.preventDefault();
+  var data = {
+    email: $( "#subscribe-email" ).val(),
+    group: "GROUP_KEY",
+    attributes: [
+      {
+        name:  "first_name",
+        value: $( "#subscribe-name" ).val()
+      }
+    ]
+  };
+
+  $.post( http://www.api.mailapp.pl, JSON.stringify(data))
+    .done(function( response ) {
+      alert.("Email been saved correctly");
+    })
+    .fail(function( response ) {
+      alert.("Something has gone wrong...");
+    });
+});
+</pre>
+</div>
+<br><br><br>
+
+<div class="jumbotron">
+    <div class="container footer text-center">
+        <h2>And the most important - it’s free and always will be!</h2>
+    </div>
+</div>
+
