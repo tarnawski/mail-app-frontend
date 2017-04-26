@@ -1,21 +1,110 @@
-<div class="Dashboard">
-<navbar-dashboard></navbar-dashboard>
-<div class="container">
-    <div ng-show="dashboard.info && dashboard.count" class="alert alert-info mailapp-alert">{{dashboard.info}}</div>
-    <div class="row page-header">
-        <div class="col-md-6">
-            <h1>DASHBOARD</h1>
+    <navbar type="dashboard"></navbar>
+    <br><br>
+
+    <div class="container Dashboard">
+        <div class="row page-header">
+            <div class="col-md-6">
+                <h1>DASHBOARD</h1>
+            </div>
+            <div class="col-md-6">
+                <div ng-show="dashboard.info && dashboard.count" class="alert alert-info mailapp-alert">{{dashboard.info}}</div>
+            </div>
         </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <input type="text"
+                                   ng-model="dashboard.newGroupName"
+                                   class="form-control"
+                                   placeholder="Name of new group"
+                                   id="name">
+                        </div>
+                        <button class="btn btn-block btn-success"
+                                ng-click="dashboard.addGroup()"
+                                type="button">CREATE GROUP
+                        </button>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="mailapp-account-username">{{dashboard.currentUser.username}}</div>
+                        <div class="mailapp-account-email">{{dashboard.currentUser.email}}</div>
+                        <br>
+                        <div>GROUP: <span class="pull-right">{{dashboard.status.group}}</span></div>
+                        <div>ACTIVE SUBSCRIBE: <span class="pull-right">{{dashboard.status.subscribe}}</span></div>
+                        <div>UNSUBSCRIBE: <span class="pull-right">{{dashboard.status.unsubscribe}}</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="text-center" ng-hide="dashboard.groups.length">
+                    <h1>You don't have any groups yet!</h1>
+                    <h2>Create first subscriber group to collect email addresses.</h2>
+                </div>
+
+                <div class="panel panel-default" ng-repeat="group in dashboard.groups">
+                    <div class="panel-body">
+                        <div class="mailapp-group-name">{{group.name}}</div>
+                        <div class="mailapp-group-key">{{group.group_key}}</div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <div class="mailapp-group-count text-center">{{group.subscriber}}</div>
+                                        <div class="text-center">SUBSCRIBERS</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <div class="mailapp-group-count text-center">{{group.unsubscriber}}</div>
+                                        <div class="text-center">UNSUBSCRIBERS</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <div class="mailapp-group-count text-center">{{group.created_at}}</div>
+                                        <div class="text-center">CREATE DATE</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-footer">
+                        <button ng-click="dashboard.addSubscriber()"
+                                class="btn btn-xs btn-success"
+                                type="button">
+                            <span class="glyphicon glyphicon-plus"></span>
+                            Add subscriber
+                        </button>
+                        <button ng-click="dashboard.generateEml(group.id)"
+                                class="btn btn-xs btn-primary"
+                                type="button">
+                            <span class="glyphicon glyphicon-envelope"></span>
+                            Generate EML
+                        </button>
+                        <button ng-click="dashboard.generateCsv(group.id)"
+                                class="btn btn-xs btn-warning"
+                                type="button">
+                            <span class="glyphicon glyphicon-download-alt"></span>
+                            Export to CSV
+                        </button>
+                        <button ng-click="dashboard.removeGroup(group.id)"
+                                class="btn btn-xs btn-danger pull-right"
+                                type="button">
+                            <span class="glyphicon glyphicon-trash"></span>
+                            Remove
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
-    <div class="row">
-        <div class="col-md-6 status-subscribed text-center">
-            <span class="count">{{dashboard.status.subscribe}}</span>
-            <h2>SUBSCRIBE</h2>
-        </div>
-        <div class="col-md-6 status-unsubscribed text-center">
-            <span class="count">{{dashboard.status.unsubscribe}}</span>
-            <h2>UNSUBSCRIBE</h2>
-        </div>
-    </div>
-</div>
-</div>

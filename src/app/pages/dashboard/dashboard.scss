@@ -1,35 +1,29 @@
 .Dashboard {
-  .container {
-    padding-left: 180px;
+  .navbar-default {
+    background: #528FCC;
+    border: none !important;
   }
 
   .mailapp-alert {
-    margin-top: 30px;
-  }
-
-  h1 {
-    margin-top: 0;
     margin-bottom: 0;
   }
 
-  .status-subscribed {
-    background-color: #528FCC;
-    color: white;
-    padding-bottom: 10px;
-    .count {
-      font-size: 56px;
-      font-weight: bold;
-    }
+  .mailapp-group-name {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .mailapp-group-key {
+    font-size: 16px;
   }
 
-  .status-unsubscribed {
-    background-color: #E74C3C;
-    color: white;
-    padding-bottom: 10px;
-    .count {
-      font-size: 56px;
-      font-weight: bold;
-    }
+  .mailapp-account-username {
+    font-size: 24px;
+  }
+  .mailapp-account-email {
+    font-size: 18px;
   }
 
+  .mailapp-group-count {
+    font-size: 24px;
+  }
 }

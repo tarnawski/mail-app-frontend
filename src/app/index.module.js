@@ -22,9 +22,7 @@
       'mailApp.login',
       'mailApp.register',
       'mailApp.home',
-      'mailApp.dashboard',
-      'mailApp.groups',
-      'mailApp.subscribers'
+      'mailApp.dashboard'
     ]);
 
 })();
