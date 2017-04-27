@@ -6,7 +6,7 @@
         .controller('DashboardController', DashboardController);
 
     /** @ngInject */
-    function DashboardController(communicationFactory, store, $state, $stateParams, $timeout) {
+    function DashboardController(communicationFactory, store, $state, $stateParams, $timeout, CONSTANTS) {
 
         var vm = this;
         vm.pushMessage = pushMessage;
@@ -76,12 +76,14 @@
             alert('Coming soon...');
         }
 
-        function generateEml() {
-            alert('Coming soon...');
+        function generateEml(id) {
+            var accessToken = vm.currentUser.access_token;
+            location.href = CONSTANTS.BASE_URL_API + "/api/export-eml/groups/" + id + "?access_token=" + accessToken;
         }
 
-        function generateCsv() {
-            alert('Coming soon...');
+        function generateCsv(id) {
+            var accessToken = vm.currentUser.access_token;
+            location.href = CONSTANTS.BASE_URL_API + "/api/export-csv/groups/" + id + "?access_token=" + accessToken;
         }
 
         function removeGroup(id) {

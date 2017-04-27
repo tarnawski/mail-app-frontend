@@ -7,7 +7,7 @@
     .constant('malarkey', malarkey)
     .constant('moment', moment)
     .constant('CONSTANTS',{
-      BASE_URL_API: 'http://mail-app.dev/app_dev.php',
+      BASE_URL_API: 'http://mailapp-api.ttarnawski.usermd.net',
       OAUTH: {
         CLIENT_ID: '1_69xzvcmvpscooswgk8kc8kg08088c8ws0swso0cgogog80kwoo',
         CLIENT_SECRET: '3qm0j3k82dog4ss8kokks4k0ow4so8cso0scoscck0ok0wwg84',

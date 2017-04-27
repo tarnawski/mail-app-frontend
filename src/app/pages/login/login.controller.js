@@ -28,7 +28,7 @@
 
     function setErrorMessage() {
       vm.successResponse = "";
-      vm.errorResponse = "Login lub hasło jest nieprawidłowe!";
+      vm.errorResponse = "Login or password is invalid!";
     }
   }
 })();
